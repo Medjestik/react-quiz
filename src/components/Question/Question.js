@@ -1,12 +1,21 @@
 import React from 'react';
 import './Question.css';
+import NavQuestion from '../NavQuestion/NavQuestion.js';
 
 function Question({ questions, setShowResult, score, setScore }) {
 
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
+    const [answeredQuestion, setAnsweredQuestion] = React.useState(1);
     const [correctAnswer, setCorrectAnswer] = React.useState(false);
     const [answerSelected, setAnswerSelected] = React.useState(false);
+    const CountQuestions = 4;
 
+    function findSkipQuestion(element, index) {
+      if (!element.answerReceived) {
+        setCurrentQuestion(index);
+      }
+    }
+  
     function handleAnswerClick (isCorrect) {
       setAnswerSelected(true);
         if (isCorrect) {
@@ -18,13 +27,23 @@ function Question({ questions, setShowResult, score, setScore }) {
 
     function handleSubmit(e) {
       e.preventDefault();
+
       if (correctAnswer) {
         setScore(score + 1);
       }
+
+      questions[currentQuestion].answerReceived = true;
+      setAnsweredQuestion(answeredQuestion + 1);
+      
       const nextQuestion = currentQuestion + 1;
-      if (nextQuestion < questions.length) {
-        setCurrentQuestion(nextQuestion);
-        setAnswerSelected(false);
+      if (answeredQuestion < CountQuestions) {
+        if (nextQuestion < questions.length && questions[nextQuestion].answerReceived === false) {
+          setCurrentQuestion(nextQuestion);
+          setAnswerSelected(false);
+        } else {
+          questions.find(findSkipQuestion);
+          setAnswerSelected(false);
+        }
       } else {
         setShowResult(true);
       }
@@ -48,6 +67,15 @@ function Question({ questions, setShowResult, score, setScore }) {
                     </li>
                   ))}
                   <button className={`answer__button ${answerSelected ? "" : "answer__button_type_disabled"}`} type="submit" onClick={handleSubmit}>Ответить</button>
+                  <nav className="nav-question__menu">{questions.map((question, index) => 
+                    <NavQuestion
+                    question={question}
+                    index={index}
+                    key={index}
+                    setCurrentQuestion={setCurrentQuestion}
+                    setAnswerSelected={setAnswerSelected}
+                    />
+                  )}</nav>
               </ul>
             </div>
         </div>

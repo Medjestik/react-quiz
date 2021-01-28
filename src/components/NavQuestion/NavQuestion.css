@@ -1,0 +1,12 @@
+.nav-question__menu {
+    display: flex;
+    margin: 20px 0px 0px 0px;
+}
+.nav-question__link {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.nav-question__link_type_block {
+    background-color: tomato;
+    pointer-events: none;
+}

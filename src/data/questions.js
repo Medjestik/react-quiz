@@ -7,6 +7,7 @@ const qustions = [
             { answerText: 'Paris', isCorrect: true },
             { answerText: 'Dublin', isCorrect: false },
         ],
+        answerReceived: false,
     },
     {
         questionText: 'Who is CEO of Tesla?',
@@ -16,6 +17,7 @@ const qustions = [
             { answerText: 'Bill Gates', isCorrect: false },
             { answerText: 'Tony Stark', isCorrect: false },
         ],
+        answerReceived: false,
     },
     {
         questionText: 'The iPhone was created by which company?',
@@ -25,6 +27,7 @@ const qustions = [
             { answerText: 'Amazon', isCorrect: false },
             { answerText: 'Microsoft', isCorrect: false },
         ],
+        answerReceived: false,
     },
     {
         questionText: 'How many Harry Potter books are there?',
@@ -34,6 +37,7 @@ const qustions = [
             { answerText: '6', isCorrect: false },
             { answerText: '7', isCorrect: true },
         ],
+        answerReceived: false,
     },
 ];
 
