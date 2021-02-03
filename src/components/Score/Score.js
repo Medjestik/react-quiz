@@ -11,10 +11,10 @@ function Score({ questions, score }) {
     }
 
     return (
-        <>
-        <div className='score-section'>Вы правильно ответили на {score} из {questions.length} вопросов!</div>
-        <h3>{countPercent(score, questions.length)}%</h3>
-        </>
+        <div className="score">
+            <h3 className="score__percent">{countPercent(score, questions.length)}%</h3>
+            <div className="score__title">Вы правильно ответили на {score} из {questions.length} вопросов!</div>
+        </div>
     )
 }
 

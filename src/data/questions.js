@@ -1,5 +1,6 @@
 const qustions = [
     {
+        questionType: 'single-answer',
         questionText: 'What is the capital of France?',
         answerOptions: [
             { answerText: 'New York', isCorrect: false },
@@ -10,6 +11,7 @@ const qustions = [
         answerReceived: false,
     },
     {
+        questionType: 'single-answer',
         questionText: 'Who is CEO of Tesla?',
         answerOptions: [
             { answerText: 'Jeff Bezos', isCorrect: false },
@@ -20,6 +22,7 @@ const qustions = [
         answerReceived: false,
     },
     {
+        questionType: 'single-answer',
         questionText: 'The iPhone was created by which company?',
         answerOptions: [
             { answerText: 'Apple', isCorrect: true },
@@ -30,6 +33,7 @@ const qustions = [
         answerReceived: false,
     },
     {
+        questionType: 'single-answer',
         questionText: 'How many Harry Potter books are there?',
         answerOptions: [
             { answerText: '1', isCorrect: false },
@@ -37,6 +41,18 @@ const qustions = [
             { answerText: '6', isCorrect: false },
             { answerText: '7', isCorrect: true },
         ],
+        answerReceived: false,
+    },
+    {
+        questionType: 'open-answer',
+        questionText: 'What is my name?',
+        answerOptions: ['ivan', 'vanya'],
+        answerReceived: false,
+    },
+    {
+        questionType: 'open-answer',
+        questionText: 'What year was america discovered?',
+        answerOptions: ['1492',],
         answerReceived: false,
     },
 ];

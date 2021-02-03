@@ -1,0 +1,23 @@
+.open-answer {
+    display: flex;
+    flex-direction: column;
+}
+.open-answer__input {
+    margin: 0px 0px 20px 0px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1A1B22;
+    border: none;
+    outline: none;
+    border: 2px solid #B6BCBF;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.open-answer__input:focus {
+    border: 2px solid #2F71E5;
+}
+.open-answer__input::placeholder {
+    font-size: 14px;
+    color: #B6BCBF;
+}
