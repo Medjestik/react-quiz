@@ -5,10 +5,12 @@ function OneAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
 
     const [correctAnswer, setCorrectAnswer] = React.useState(false);
     const [answerSelected, setAnswerSelected] = React.useState(false);
+    const [userAnswer, setUserAnswer] = React.useState('');
 
-    function handleAnswerClick (isCorrect) {
+    function handleAnswerClick (answer) {
         setAnswerSelected(true);
-          if (isCorrect) {
+        setUserAnswer(answer.answerText);
+          if (answer.isCorrect) {
             setCorrectAnswer(true);
           } else {
             setCorrectAnswer(false);
@@ -25,16 +27,16 @@ function OneAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
             {question.answerOptions.map((answerOption) => (
             <li className="question__answer-item" key={answerOption.answerText}>
                 <label className="radio">
-                    <input className="radio" name={currentQuestionIndex} type="radio" value={answerOption.answerText} onClick={()=> handleAnswerClick(answerOption.isCorrect)} defaultChecked={false}></input>
+                    <input className="radio" name={currentQuestionIndex} type="radio" value={answerOption.answerText} onClick={()=> handleAnswerClick(answerOption)} defaultChecked={false}></input>
                     <span className="">{answerOption.answerText}</span>
                 </label>
             </li>
             ))}
         </ul>
         <button 
-        className={`answer__button ${answerSelected ? "" : "answer__button_type_disabled"}`} 
+        className={`btn answer__button ${answerSelected ? "" : "answer__button_type_disabled"}`} 
         type="button" 
-        onClick={(() => confirmAnswer(correctAnswer))}
+        onClick={(() => confirmAnswer(correctAnswer, userAnswer))}
         >
         Ответить
         </button>

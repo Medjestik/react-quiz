@@ -1,4 +1,4 @@
-const qustions = [
+const questions = [
     {
         questionType: 'single-answer',
         questionText: 'What is the capital of France?',
@@ -9,6 +9,8 @@ const qustions = [
             { answerText: 'Dublin', isCorrect: false },
         ],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
     },
     {
         questionType: 'single-answer',
@@ -20,6 +22,8 @@ const qustions = [
             { answerText: 'Tony Stark', isCorrect: false },
         ],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
     },
     {
         questionType: 'single-answer',
@@ -31,6 +35,8 @@ const qustions = [
             { answerText: 'Microsoft', isCorrect: false },
         ],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
     },
     {
         questionType: 'single-answer',
@@ -42,19 +48,59 @@ const qustions = [
             { answerText: '7', isCorrect: true },
         ],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
     },
     {
         questionType: 'open-answer',
         questionText: 'What is my name?',
-        answerOptions: ['ivan', 'vanya'],
+        answerOptions: ['IVAN', 'vanya'],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
     },
     {
         questionType: 'open-answer',
         questionText: 'What year was america discovered?',
         answerOptions: ['1492',],
         answerReceived: false,
+        userAnswer: '',
+        answerCorrect: false,
+    },
+    {
+        questionType: 'multi-answer',
+        questionText: 'what pets do you have?',
+        answerOptions: [
+            { answerText: 'dog', isCorrect: true },
+            { answerText: 'parrot', isCorrect: false },
+            { answerText: 'pig', isCorrect: false },
+            { answerText: 'cat', isCorrect: true },
+        ],
+        answerReceived: false,
+        userAnswer: [],
+        answerCorrect: false,
+    },
+    {
+        questionType: 'sequence',
+        questionText: 'To do?',
+        answers: {
+            'answer-1': { id: 'answer-1', text: '2', },
+            'answer-2': { id: 'answer-2', text: '4', },
+            'answer-3': { id: 'answer-3', text: '3', },
+            'answer-4': { id: 'answer-4', text: '1', },
+        },
+        columns: {
+            'column-1': {
+                id: 'column-1',
+                answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4'],
+            },
+        },
+        columnOrder: ['column-1'],
+        answerReceived: false,
+        rightAnswers: ['answer-4', 'answer-1', 'answer-3', 'answer-2'],
+        userAnswer: [],
+        answerCorrect: false,
     },
 ];
 
-export default qustions;
+export default questions;

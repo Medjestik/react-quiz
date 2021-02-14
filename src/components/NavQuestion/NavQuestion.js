@@ -2,6 +2,8 @@ import React from 'react';
 import './NavQuestion.css';
 import oneAnswerImg from '../../images/quiz/question-one-answer.png';
 import openAnswerImg from '../../images/quiz/question-open-answer.png';
+import multiAnswerImg from '../../images/quiz/question-multi-answer.png';
+import sequenceImg from '../../images/quiz/question-sequence.png';
 
 function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
 
@@ -14,6 +16,20 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
                     <figcaption className="nav-question__type-caption">Тип теста: вопрос с открытым ответом</figcaption>
                 </>
             );
+          case "multi-answer": 
+            return (
+                <>
+                    <img className="nav-question__type-img" src={multiAnswerImg} alt="Тип теста"></img>
+                    <figcaption className="nav-question__type-caption">Тип теста: выбор нескольких правильных ответов</figcaption>
+                </>
+            );
+            case "sequence": 
+            return (
+                <>
+                    <img className="nav-question__type-img" src={sequenceImg} alt="Тип теста"></img>
+                    <figcaption className="nav-question__type-caption">Тип теста: установление правильной последовательности</figcaption>
+                </>
+            );
           default:
             return (
                 <>
@@ -23,6 +39,7 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
             );
         }
     }
+    
 
     return (
         <nav className="nav-question">

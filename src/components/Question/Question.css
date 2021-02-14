@@ -1,10 +1,11 @@
 .question {
     position: relative;
-    min-height: 100%;
+    min-height: 500px;
     display: flex;
 }
 .question__container {
     padding: 40px 20px 30px;
+    min-width: 500px;
 }
 .question__count {
     position: absolute;
@@ -27,83 +28,16 @@
 .question__answer-item {
     margin-bottom: 10px;
 }
-.question__answer-radio {
-    margin-right: 5px;
-}
 .answer__button {
     width: 135px;
     margin-top: 10px;
     background-color: #2F71E5;
-    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
-    border-radius: 100px;
-    border: none;
     color: #ffffff;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-    padding: 10px 27px;
     outline: none;
-    cursor: pointer;
     transition: .3s;
 }
 .answer__button_type_disabled {
     background-color: #F2F2F2;
     color: #D9D9D9;
     pointer-events: none;
-}
-.radio {
-    margin: 16px 0;
-    display: block;
-    cursor: pointer;
-}
-.radio input {
-    display: none;
-}
-.radio input + span {
-    line-height: 22px;
-    height: 22px;
-    padding-left: 22px;
-    display: block;
-    position: relative;
-}
-.radio input + span:not(:empty) {
-    padding-left: 30px;
-}
-.radio input + span:before, .radio input + span:after {
-    content: '';
-    width: 22px;
-    height: 22px;
-    display: block;
-    border-radius: 50%;
-    left: 0;
-    top: 0;
-    position: absolute;
-}
-.radio input + span:before {
-    background: #777777;
-    transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
-}
-.radio input + span:after {
-    background: #fff;
-    transform: scale(0.78);
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
-}
-.radio input:checked + span:before {
-    transform: scale(1.04);
-    background: #2F71E5;
-}
-.radio input:checked + span:after {
-    transform: scale(0.4);
-    transition: transform 0.3s ease;
-}
-.radio:hover input + span:before {
-    transform: scale(0.92);
-}
-.radio:hover input + span:after {
-    transform: scale(0.74);
-}
-.radio:hover input:checked + span:after {
-    transform: scale(0.4);
 }

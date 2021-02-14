@@ -3,10 +3,13 @@ import './Question.css';
 import NavQuestion from '../NavQuestion/NavQuestion.js';
 import OneAnswerQuestion from '../OneAnswerQuestion/OneAnswerQuestion.js';
 import OpenAnswerQuestion from '../OpenAnswerQuestion/OpenAnswerQuestion.js';
+import MultiAnswerQuestion from '../MultiAnswerQuestion/MultiAnswerQuestion.js';
+import SequenceQuestion from '../SequenceQuestion/SequenceQuestion.js';
 
-function Question({ questions, setShowResult, score, setScore }) {
+function Question({ questions, onShowResult, onShowQuestions, score, setScore }) {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
+  const [currentQuestion, setCurrentQuestion] = React.useState(questions[0]);
   const [answeredQuestion, setAnsweredQuestion] = React.useState(1);
 
   function findSkipQuestion(element, index) {
@@ -14,13 +17,8 @@ function Question({ questions, setShowResult, score, setScore }) {
       setCurrentQuestionIndex(index);
     }
   }
-  
-  function confirmAnswer(correctAnswer) {
-    if (correctAnswer) {
-      setScore(score + 1);
-    }
-    questions[currentQuestionIndex].answerReceived = true;
-    setAnsweredQuestion(answeredQuestion + 1);
+
+  function changeQuestion () {
     const nextQuestion = currentQuestionIndex + 1;
     if (answeredQuestion < questions.length) {
       if (nextQuestion < questions.length && questions[nextQuestion].answerReceived === false) {
@@ -29,15 +27,48 @@ function Question({ questions, setShowResult, score, setScore }) {
         questions.find(findSkipQuestion);
       }
     } else {
-      setShowResult(true);
+      onShowResult(true);
+      onShowQuestions(false);
     }
   }
+  
+  function confirmAnswer(correctAnswer, userAnswer) {
+    if (correctAnswer) {
+      setScore(score + 1);
+      currentQuestion.answerCorrect = true;
+    }
+    currentQuestion.userAnswer = userAnswer;
+    currentQuestion.answerReceived = true;
+    setAnsweredQuestion(answeredQuestion + 1);
+    changeQuestion();
+    
+  }
+
+  React.useEffect(() => {
+    setCurrentQuestion(questions[currentQuestionIndex]);
+  }, [questions, currentQuestionIndex]);
 
   function getTypeOfQuestion (question) {
     switch (question.questionType) {
       case "open-answer": 
         return (
         <OpenAnswerQuestion
+        question={question}
+        currentQuestionIndex={currentQuestionIndex}
+        confirmAnswer={confirmAnswer}
+        />
+        );
+      case "multi-answer": 
+        return (
+        <MultiAnswerQuestion
+        question={question}
+        currentQuestionIndex={currentQuestionIndex}
+        confirmAnswer={confirmAnswer}
+        />
+        );
+        case "sequence":
+        return (
+        <SequenceQuestion
         question={question}
         currentQuestionIndex={currentQuestionIndex}
         confirmAnswer={confirmAnswer}
@@ -55,6 +86,8 @@ function Question({ questions, setShowResult, score, setScore }) {
   }
 
   return (
+
+    (currentQuestion !== {}) &&
     <div className="question">
 
       <NavQuestion
@@ -65,8 +98,8 @@ function Question({ questions, setShowResult, score, setScore }) {
       
       <div className="question__container">
         <span className="question__count">Осталось вопросов: {questions.length - answeredQuestion + 1}</span>
-        <h2 className="question__title">{questions[currentQuestionIndex].questionText}</h2>
-        {getTypeOfQuestion(questions[currentQuestionIndex])}
+        <h2 className="question__title">{currentQuestion.questionText}</h2>
+        {getTypeOfQuestion(currentQuestion)}
       </div>
 
     </div>

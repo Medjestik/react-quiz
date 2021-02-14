@@ -10,11 +10,15 @@ function OpenAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
     }
 
     function checkAnswer () {
-        const transformAnswer = answer.toLocaleLowerCase()
-        if (question.answerOptions.includes(transformAnswer)) {
-            confirmAnswer(true);
+        const transformUserAnswer = answer.toLocaleLowerCase();
+        const transformRightAnswer = question.answerOptions.map((elem) => {
+            return elem.toLocaleLowerCase();
+        });
+        
+        if (transformRightAnswer.includes(transformUserAnswer)) {
+            confirmAnswer(true, transformUserAnswer);
         } else {
-            confirmAnswer(false);
+            confirmAnswer(false, transformUserAnswer);
         }
     }
 
@@ -38,7 +42,7 @@ function OpenAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
                 >
                 </input>
                 <button 
-                className={`answer__button ${(answer.length > 0) ? "" : "answer__button_type_disabled"}`} 
+                className={`btn answer__button ${(answer.length > 0) ? "" : "answer__button_type_disabled"}`} 
                 type="button" 
                 onClick={checkAnswer}
                 >
