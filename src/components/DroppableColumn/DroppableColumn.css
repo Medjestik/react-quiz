@@ -8,14 +8,13 @@
     justify-content: space-between;
     list-style-type: none;
     padding: 0px;
-    margin: 0px 0px 8px 0px;
+    margin: 0px 10px 8px 0px;
 }
 .droppable__count {
     color: #D9D9D9;
     font-family: "Source Sans Pro",Arial,sans-serif;
     font-weight: 400;
     font-size: 18px;
-    min-height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,9 +22,60 @@
 .droppable-column__list {
     list-style: none;
     padding: 0px;
-    min-width: 400px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0px;
+}
+.match-column__list {
+    list-style: none;
+    padding: 0px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0px 45px 0px 0px;
+}
+.match-column__word {
+    margin: 0px 0px 8px 0px;
+    border: 1px solid #777777;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #1A1B22;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 10%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 3px;
+}
+.match-column__word:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-image: url('../../images/quiz/double-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.match-column__word_type_large {
+    min-height: 65px;
+}
+.match-column__word_type_large:after {
+    top: 20px;
+    right: -35px;
+}
+.match-column__word_type_small {
+    min-height: 40px;
+}
+.match-column__word_type_small:after {
+    top: 10px;
+    right: -35px;
+}
+.droppable__count_type_large{
+    min-height: 73px;
+}
+.droppable__count_type_small {
+    min-height: 48px;
 }

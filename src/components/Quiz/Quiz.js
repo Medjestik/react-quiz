@@ -1,6 +1,7 @@
 import React from 'react';
 import './Quiz.css';
-import questions from '../../data/questions.js';
+import questions from '../../data/questions-football.js';
+import data from '../../data/quiz-data.js';
 import StartQuiz from '../StartQuiz/StartQuiz.js';
 import Score from '../Score/Score.js';
 import Question from '../Question/Question.js';
@@ -15,6 +16,7 @@ function Quiz() {
     const [showReport, setShowReport]= React.useState(false);
     const [score, setScore] = React.useState(0);
     const [passingScore, setPassingScore] = React.useState(0);
+    const [spentTime, setSpentTime] = React.useState(0);
   
     React.useEffect(() => {
       shuffleQuestions(questions);
@@ -43,6 +45,7 @@ function Quiz() {
               onBeginQuiz={setBeginQuiz}
               onShowQuestions={setShowQuestions}
               passingScore={passingScore}
+              quizTime={data.quizTime}
               />
           }
           {beginQuiz && showQuestions &&
@@ -52,6 +55,8 @@ function Quiz() {
               onShowQuestions={setShowQuestions}
               score={score}
               setScore={setScore}
+              quizTime={data.quizTime}
+              onSpentTime={setSpentTime}
               />   
           }
           {showResult && !showQuestions &&
@@ -60,6 +65,7 @@ function Quiz() {
               score={score}
               onShowReport={setShowReport}
               onShowResult={setShowResult}
+              spentTime={spentTime}
               />
           }
           {showReport && !showResult &&

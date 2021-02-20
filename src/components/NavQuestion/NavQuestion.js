@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './NavQuestion.css';
 import oneAnswerImg from '../../images/quiz/question-one-answer.png';
 import openAnswerImg from '../../images/quiz/question-open-answer.png';
 import multiAnswerImg from '../../images/quiz/question-multi-answer.png';
 import sequenceImg from '../../images/quiz/question-sequence.png';
+import QuizTimer from '../QuizTimer/QuizTimer.js';
 
-function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
+function NavQuestion({ questions, changeQuestion, currentQuestionIndex, quizTime, onSpentTime }) {
 
     function getQuestionInfo () {
         switch (questions[currentQuestionIndex].questionType) {
@@ -47,6 +49,10 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
             <figure className="nav-question__type">
                 {getQuestionInfo()}
             </figure>
+            <QuizTimer
+            quizTime={quizTime}
+            onSpentTime={onSpentTime}
+            />
             <ul className="nav-question__menu">{questions.map((question, index) =>
                 <button
                 key={index}
@@ -64,6 +70,14 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex }) {
             </ul>
         </nav>
     )
+}
+
+NavQuestion.propTypes = {
+    questions: PropTypes.array,
+    changeQuestion: PropTypes.func,
+    currentQuestionIndex: PropTypes.number,
+    quizTime: PropTypes.number,
+    onSpentTime: PropTypes.func,
 }
 
 export default NavQuestion;

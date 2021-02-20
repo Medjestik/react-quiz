@@ -65,7 +65,8 @@ function SequenceQuestion({ question, currentQuestionIndex, confirmAnswer }) {
         return <DroppableColumn 
         key={currentQuestionIndex} 
         column={column} 
-        answers={answers} 
+        answers={answers}
+        question={question}
         />  
       })}
     </DragDropContext>

@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Question.css';
 import NavQuestion from '../NavQuestion/NavQuestion.js';
 import OneAnswerQuestion from '../OneAnswerQuestion/OneAnswerQuestion.js';
 import OpenAnswerQuestion from '../OpenAnswerQuestion/OpenAnswerQuestion.js';
 import MultiAnswerQuestion from '../MultiAnswerQuestion/MultiAnswerQuestion.js';
 import SequenceQuestion from '../SequenceQuestion/SequenceQuestion.js';
+import MatchQuestion from '../MatchQuestion/MatchQuestion.js';
 
-function Question({ questions, onShowResult, onShowQuestions, score, setScore }) {
+function Question({ questions, onShowResult, onShowQuestions, score, setScore, quizTime, onSpentTime }) {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(questions[0]);
@@ -74,6 +76,14 @@ function Question({ questions, onShowResult, onShowQuestions, score, setScore })
         confirmAnswer={confirmAnswer}
         />
         );
+        case "match":
+        return (
+        <MatchQuestion
+        question={question}
+        currentQuestionIndex={currentQuestionIndex}
+        confirmAnswer={confirmAnswer}
+        />
+        );
       default:
         return (
         <OneAnswerQuestion 
@@ -94,6 +104,8 @@ function Question({ questions, onShowResult, onShowQuestions, score, setScore })
       questions={questions}
       changeQuestion={setCurrentQuestionIndex}
       currentQuestionIndex={currentQuestionIndex}
+      quizTime={quizTime}
+      onSpentTime={onSpentTime}
       />
       
       <div className="question__container">
@@ -104,6 +116,16 @@ function Question({ questions, onShowResult, onShowQuestions, score, setScore })
 
     </div>
   )
+}
+
+Question.propTypes = {
+  questions: PropTypes.array,
+  onShowResult: PropTypes.func,
+  onShowQuestions: PropTypes.func,
+  score: PropTypes.number,
+  setScore: PropTypes.func,
+  quizTime: PropTypes.number,
+  onSpentTime: PropTypes.func,
 }
 
 export default Question;

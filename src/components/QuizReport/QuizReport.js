@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './QuizReport.css';
 
 function QuizReport({ questions, score }) {
@@ -18,6 +19,11 @@ function QuizReport({ questions, score }) {
             </ul> 
         </div>
     )
+}
+
+QuizReport.propTypes = {
+    questions: PropTypes.array,
+    score: PropTypes.number,
 }
 
 export default QuizReport;

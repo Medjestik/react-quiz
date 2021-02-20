@@ -29,12 +29,13 @@
 }
 .begin__info-item {
     display: flex;
-    max-width: 250px;
+    max-width: 350px;
 }
 .begin__info-img {
     width: 70px;
     height: 70px;
     margin-right: 10px;
+    pointer-events: none;
 }
 .begin__info-description {
     display: flex;

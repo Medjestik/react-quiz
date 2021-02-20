@@ -89,6 +89,11 @@ const questions = [
             'answer-3': { id: 'answer-3', text: '3', },
             'answer-4': { id: 'answer-4', text: '1', },
         },
+        longestAnswer: 1,
+        rightAnswers: ['answer-4', 'answer-1', 'answer-3', 'answer-2'],
+        answerReceived: false,
+        userAnswer: [],
+        answerCorrect: false,
         columns: {
             'column-1': {
                 id: 'column-1',
@@ -96,10 +101,30 @@ const questions = [
             },
         },
         columnOrder: ['column-1'],
+    },
+    {
+        questionType: 'match',
+        questionText: 'Animals?',
+        matchedWords: ['cow', 'dog', 'cat', 'parrot'],
+        answers: {
+            'answer-1': { id: 'answer-1', text: 'cat', },
+            'answer-2': { id: 'answer-2', text: 'dog', },
+            'answer-3': { id: 'answer-3', text: 'parrot', },
+            'answer-4': { id: 'answer-4', text: 'cow', },
+        },
+        longestAnswer: 79,
+        rightAnswers: ['answer-4', 'answer-2', 'answer-1', 'answer-3'],
         answerReceived: false,
-        rightAnswers: ['answer-4', 'answer-1', 'answer-3', 'answer-2'],
+        
         userAnswer: [],
         answerCorrect: false,
+        columns: {
+            'column-1': {
+                id: 'column-1',
+                answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4'],
+            },
+        },
+        columnOrder: ['column-1'],
     },
 ];
 

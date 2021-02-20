@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './StartQuiz.css';
 import questionsImg from '../../images/quiz/quiz-question.png';
 import scoreImg from '../../images/quiz/quiz-passing-score.png';
-import attemptImg from '../../images/quiz/quiz-attempt.png';
+import timeImg from '../../images/quiz/quiz-time.png';
 
 
-function StartQuiz({ questions, onBeginQuiz, onShowQuestions, passingScore }) {
+function StartQuiz({ questions, onBeginQuiz, onShowQuestions, passingScore, quizTime }) {
 
     function beginQuiz () {
         onBeginQuiz(true);
@@ -38,15 +39,23 @@ function StartQuiz({ questions, onBeginQuiz, onShowQuestions, passingScore }) {
                     </div>
                 </li>
                 <li className="begin__info-item">
-                    <img className="begin__info-img" src={attemptImg} alt="Количество вопросов"></img>
+                    <img className="begin__info-img" src={timeImg} alt="Количество вопросов"></img>
                     <div className="begin__info-description">
-                        <span className="begin__info-count">3</span>
-                        <p className="begin__info-caption">осталось попыток</p>
+                        <span className="begin__info-count">{quizTime}</span>
+                        <p className="begin__info-caption">время на прохождение тестирования (в минутах)</p>
                     </div>
                 </li>
             </ul>
         </section>
     )
+}
+
+StartQuiz.propTypes = {
+    questions: PropTypes.array,
+    onBeginQuiz: PropTypes.func,
+    onShowQuestions: PropTypes.func,
+    passingScore: PropTypes.number,
+    quizTime: PropTypes.number,
 }
 
 export default StartQuiz;
