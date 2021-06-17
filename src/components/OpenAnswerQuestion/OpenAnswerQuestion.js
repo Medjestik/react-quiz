@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './OpenAnswerQuestion.css';
 
 function OpenAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
@@ -51,6 +52,12 @@ function OpenAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
             </div>
         </div>
     )
+}
+
+OpenAnswerQuestion.propTypes = {
+    question: PropTypes.object,
+    currentQuestionIndex: PropTypes.number,
+    confirmAnswer: PropTypes.func,
 }
 
 export default OpenAnswerQuestion;

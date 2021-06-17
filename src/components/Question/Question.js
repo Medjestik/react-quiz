@@ -8,7 +8,7 @@ import MultiAnswerQuestion from '../MultiAnswerQuestion/MultiAnswerQuestion.js';
 import SequenceQuestion from '../SequenceQuestion/SequenceQuestion.js';
 import MatchQuestion from '../MatchQuestion/MatchQuestion.js';
 
-function Question({ questions, onShowResult, onShowQuestions, score, setScore, quizTime, onSpentTime }) {
+function Question({ questions, onShowResult, onShowQuestions, score, setScore, quizTime, onSpentTime, startQuizTime }) {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(questions[0]);
@@ -106,6 +106,7 @@ function Question({ questions, onShowResult, onShowQuestions, score, setScore, q
       currentQuestionIndex={currentQuestionIndex}
       quizTime={quizTime}
       onSpentTime={onSpentTime}
+      startQuizTime={startQuizTime}
       />
       
       <div className="question__container">

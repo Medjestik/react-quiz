@@ -6,16 +6,16 @@ import scoreImg from '../../images/quiz/quiz-passing-score.png';
 import timeImg from '../../images/quiz/quiz-time.png';
 
 
-function StartQuiz({ questions, onBeginQuiz, onShowQuestions, passingScore, quizTime }) {
+function StartQuiz({ questions, onBeginQuiz, onShowQuestions, passingScore, quizTime, setStartQuizTime }) {
 
     function beginQuiz () {
         onBeginQuiz(true);
-        onShowQuestions(true);
+        onShowQuestions(true); 
     }
 
     return (
         <section className="begin">
-            <h2 className="begin__title">Добро пожаловать в систему тестирования!</h2>
+            <h2 className="begin__title">Тест на тему «Футбол»</h2>
             <button 
             className="btn begin__button" 
             onClick={beginQuiz} 

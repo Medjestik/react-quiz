@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MultiAnswerQuestion.css';
 
 function MultiAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
@@ -79,5 +80,11 @@ function MultiAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) 
         </>
     )
 }
+
+MultiAnswerQuestion.propTypes = {
+    question: PropTypes.object,
+    currentQuestionIndex: PropTypes.number,
+    confirmAnswer: PropTypes.func,
+  }
 
 export default MultiAnswerQuestion;

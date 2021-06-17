@@ -41,13 +41,10 @@ const questionsFootball = [
         answerReceived: false,
         userAnswer: [],
         answerCorrect: false,
-        columns: {
-            'column-1': {
-                id: 'column-1',
-                answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4', 'answer-5'],
-            },
+        column: {
+            id: 'column-1',
+            answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4', 'answer-5'],
         },
-        columnOrder: ['column-1'],
     },
     {
         questionType: 'match',
@@ -62,16 +59,12 @@ const questionsFootball = [
         longestAnswer: 79,
         rightAnswers: ['answer-3', 'answer-4', 'answer-2', 'answer-1'],
         answerReceived: false,
-        
         userAnswer: [],
         answerCorrect: false,
-        columns: {
-            'column-1': {
-                id: 'column-1',
-                answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4'],
-            },
+        column: {
+            id: 'column-1',
+            answerIds: ['answer-1', 'answer-2', 'answer-3', 'answer-4'],
         },
-        columnOrder: ['column-1'],
     },
     {
         questionType: 'open-answer',

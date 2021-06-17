@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './OneAnswerQuestion.css';
 
 function OneAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
@@ -43,5 +44,11 @@ function OneAnswerQuestion({ question, currentQuestionIndex, confirmAnswer }) {
         </>
     )
 }
+
+OneAnswerQuestion.propTypes = {
+    question: PropTypes.object,
+    currentQuestionIndex: PropTypes.number,
+    confirmAnswer: PropTypes.func,
+  }
 
 export default OneAnswerQuestion;

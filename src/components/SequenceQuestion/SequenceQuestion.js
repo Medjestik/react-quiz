@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-beautiful-dnd';
 import './SequenceQuestion.css';
 import DroppableColumn from '../DroppableColumn/DroppableColumn.js';
@@ -9,7 +10,7 @@ function SequenceQuestion({ question, currentQuestionIndex, confirmAnswer }) {
   const [answerSelected, setAnswerSelected] = React.useState(false);
 
   function checkAnswer() {
-    const column = dataQuestion.columns[dataQuestion.columnOrder];
+    const column = dataQuestion.column;
     const rightAnswers = dataQuestion.rightAnswers.join();
     let strokeAnswer = column.answerIds.map(answerId => dataQuestion.answers[answerId].text).join(' -> ');
 
@@ -24,32 +25,27 @@ function SequenceQuestion({ question, currentQuestionIndex, confirmAnswer }) {
     const { destination, source, draggableId } = result;
 
     if (!destination) {
-      
       return;
     }
 
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
-
       return;
     }
 
-    const column = dataQuestion.columns[source.droppableId];
+    const column = dataQuestion.column;
 
     const newAnswerIds = Array.from(column.answerIds);
     newAnswerIds.splice(source.index, 1);
     newAnswerIds.splice(destination.index, 0, draggableId);
 
     const newColumn = {
-      ...column,
+      id: column.id,
       answerIds: newAnswerIds,
     };
 
     const newState = {
       ...dataQuestion,
-      columns: {
-        ...dataQuestion.columns,
-        [newColumn.id]: newColumn,
-      },
+      column: newColumn,
     };
 
     setDataQuestion(newState);
@@ -59,16 +55,12 @@ function SequenceQuestion({ question, currentQuestionIndex, confirmAnswer }) {
   return (
     <>
     <DragDropContext onDragEnd={onDragEnd} >
-      {dataQuestion.columnOrder.map((columnId) => {
-        const column = dataQuestion.columns[columnId];
-        const answers = column.answerIds.map(answerId => dataQuestion.answers[answerId]);
-        return <DroppableColumn 
-        key={currentQuestionIndex} 
-        column={column} 
-        answers={answers}
-        question={question}
+      <DroppableColumn 
+          key={currentQuestionIndex} 
+          column={dataQuestion.column}
+          answers={dataQuestion.column.answerIds.map(answerId => dataQuestion.answers[answerId])}
+          question={question}
         />  
-      })}
     </DragDropContext>
     <button 
     className={`btn answer__button ${answerSelected ? "" : "answer__button_type_disabled"}`} 
@@ -79,6 +71,12 @@ function SequenceQuestion({ question, currentQuestionIndex, confirmAnswer }) {
     </button>
     </>
   );
+}
+
+SequenceQuestion.propTypes = {
+  question: PropTypes.object,
+  currentQuestionIndex: PropTypes.number,
+  confirmAnswer: PropTypes.func,
 }
 
 export default SequenceQuestion;

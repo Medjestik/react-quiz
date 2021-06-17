@@ -15,7 +15,9 @@ const format = time => {
 
 function QuizTimer({ quizTime, onSpentTime }) {
 
-    const quizMin = quizTime * 60;
+    let startQuizTime = Number(localStorage.getItem('startQuizTime') || Math.floor(Date.now() / 1000));
+
+    const quizMin = quizTime * 60 - (Math.floor(Date.now() / 1000) - startQuizTime);
     const [counter, setCounter] = React.useState(quizMin);
     
     React.useEffect(() => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import './DroppableColumn.css';
+import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import DraggableItem from '../DraggableItem/DraggableItem.js';
 
@@ -60,6 +61,13 @@ function DroppableColumn({ column, answers, question, }) {
         </div>
     )
 }
+
+DroppableColumn.propTypes = {
+    column: PropTypes.object,
+    answers: PropTypes.array,
+    question: PropTypes.object,
+}
+
 
 export default DroppableColumn;
 

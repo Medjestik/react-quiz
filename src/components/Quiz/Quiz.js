@@ -17,6 +17,7 @@ function Quiz() {
     const [score, setScore] = React.useState(0);
     const [passingScore, setPassingScore] = React.useState(0);
     const [spentTime, setSpentTime] = React.useState(0);
+    const [startQuizTime, setStartQuizTime] = React.useState(0);
   
     React.useEffect(() => {
       shuffleQuestions(questions);
@@ -46,6 +47,7 @@ function Quiz() {
               onShowQuestions={setShowQuestions}
               passingScore={passingScore}
               quizTime={data.quizTime}
+              setStartQuizTime={setStartQuizTime}
               />
           }
           {beginQuiz && showQuestions &&
@@ -57,6 +59,7 @@ function Quiz() {
               setScore={setScore}
               quizTime={data.quizTime}
               onSpentTime={setSpentTime}
+              startQuizTime={startQuizTime}
               />   
           }
           {showResult && !showQuestions &&

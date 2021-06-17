@@ -39,7 +39,7 @@ Score.propTypes = {
     score: PropTypes.number,
     onShowReport: PropTypes.func,
     onShowResult: PropTypes.func,
-    spentTime: PropTypes.number,
+    spentTime: PropTypes.string,
 }
 
 export default Score;

@@ -5,9 +5,10 @@ import oneAnswerImg from '../../images/quiz/question-one-answer.png';
 import openAnswerImg from '../../images/quiz/question-open-answer.png';
 import multiAnswerImg from '../../images/quiz/question-multi-answer.png';
 import sequenceImg from '../../images/quiz/question-sequence.png';
+import matchImg from '../../images/quiz/question-match.png';
 import QuizTimer from '../QuizTimer/QuizTimer.js';
 
-function NavQuestion({ questions, changeQuestion, currentQuestionIndex, quizTime, onSpentTime }) {
+function NavQuestion({ questions, changeQuestion, currentQuestionIndex, quizTime, onSpentTime, startQuizTime }) {
 
     function getQuestionInfo () {
         switch (questions[currentQuestionIndex].questionType) {
@@ -32,6 +33,13 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex, quizTime
                     <figcaption className="nav-question__type-caption">Тип теста: установление правильной последовательности</figcaption>
                 </>
             );
+            case "match": 
+            return (
+                <>
+                    <img className="nav-question__type-img" src={matchImg} alt="Тип теста"></img>
+                    <figcaption className="nav-question__type-caption">Тип теста: установление соответствия</figcaption>
+                </>
+            );
           default:
             return (
                 <>
@@ -52,6 +60,7 @@ function NavQuestion({ questions, changeQuestion, currentQuestionIndex, quizTime
             <QuizTimer
             quizTime={quizTime}
             onSpentTime={onSpentTime}
+            startQuizTime={startQuizTime}
             />
             <ul className="nav-question__menu">{questions.map((question, index) =>
                 <button
